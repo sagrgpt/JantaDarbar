@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "861084569031",
+    "firebase_url": "https://databasemodule-f1aa6.firebaseio.com",
+    "project_id": "databasemodule-f1aa6",
+    "storage_bucket": "databasemodule-f1aa6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861084569031:android:fe147ae1da5a50da",
+        "android_client_info": {
+          "package_name": "com.example.sagar.databasemodule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861084569031-sfvo32mofv5f9kd7vltqkttn3tu3acml.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sagar.databasemodule",
+            "certificate_hash": "0c193224629d82d8fcf554a3ffe33b8aa2da5a26"
+          }
+        },
+        {
+          "client_id": "861084569031-nan3jl202mbtvd9oc649eeu46kqt836j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBA_H3hLjEL8NybOr3Po-jgQZetl5HDyaw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861084569031-nan3jl202mbtvd9oc649eeu46kqt836j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861084569031:android:bfaa4d074fe9060c",
+        "android_client_info": {
+          "package_name": "com.complaints.jd.jantadurbar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861084569031-i5ub43ku8qrl84pn7rp8h0n4mpo0jn1a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.complaints.jd.jantadurbar",
+            "certificate_hash": "0c193224629d82d8fcf554a3ffe33b8aa2da5a26"
+          }
+        },
+        {
+          "client_id": "861084569031-nan3jl202mbtvd9oc649eeu46kqt836j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBA_H3hLjEL8NybOr3Po-jgQZetl5HDyaw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861084569031-nan3jl202mbtvd9oc649eeu46kqt836j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

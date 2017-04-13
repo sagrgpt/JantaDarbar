@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/createTitle"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Title Eg: Road, Electricity"
+                android:gravity="center"
+                android:inputType="textCapWords"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:layout_centerHorizontal="true"/>
+
+            <EditText
+                android:id="@+id/createDescription"
+                android:layout_marginTop="5dp"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="Description"
+                android:lines="3"
+                android:gravity="center"
+                android:scrollbars="vertical"
+                android:layout_centerHorizontal="true"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:maxLength="120"
+                android:inputType="textMultiLine"
+                android:layout_below="@+id/createTitle"/>
+
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/makeLandmark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:hint="Location Eg: Baywatch hotel"
+                android:inputType="textCapWords"
+                android:layout_below="@+id/createDescription"/>
+
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/makeWardNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:hint="Ward No. Eg: 10"
+                android:inputType="number"
+                android:gravity="center"
+                android:layout_below="@+id/makeLandmark"/>
+
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/makeCity"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:hint="City"
+                android:gravity="center"
+                android:lines="1"
+                android:maxLength="20"
+                android:inputType="textAutoComplete|textCapWords"
+                android:layout_below="@+id/makeWardNo"/>
+
+            <Button
+                android:id="@+id/onSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register Complain"
+                android:layout_below="@+id/makeCity"
+                android:background="@drawable/borderlayout"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorAccent"
+                android:layout_marginBottom="5dp"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>
