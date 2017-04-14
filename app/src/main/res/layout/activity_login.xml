@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:layout_marginStart="100dp"
-        android:hint="Email Id"
+        android:hint="Username"
         android:inputType="textEmailAddress"
         android:maxLines="1"
         android:textAppearance="?android:textAppearanceMedium"

@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2016 Jd, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
 /**This application uses firebase database itself to get login authentication for the users
  * and not the firebase authentication api. For more understanding on the database and login
  * connection of the application, please view the database itself from the firebase console.*/
@@ -28,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        setTitle("Login");
 
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);

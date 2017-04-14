@@ -27,8 +27,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import com.complaints.jd.jantadurbar.Adapters.AdminRecyclerAdapter;
 import com.complaints.jd.jantadurbar.Adapters.DataStorageClass;
-import com.complaints.jd.jantadurbar.Adapters.RecyclerAdapter;
 import com.complaints.jd.jantadurbar.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -39,23 +39,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class NewsFeedFragment extends Fragment {
+public class EditFeedActivity extends Fragment {
 
     private RecyclerView recyclerView;
-    private RecyclerAdapter mAdapter;
     private Context mContext;
+    private AdminRecyclerAdapter mAdapter;
     final List<DataStorageClass> dataArray = new ArrayList<>();
-
-    public NewsFeedFragment() {
+    public EditFeedActivity() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mContext = container.getContext();
-        return inflater.inflate(R.layout.fragment_news_feed, container, false);
+        return inflater.inflate(R.layout.fragment_edit_feed, container, false);
     }
 
     @Override
@@ -79,21 +79,17 @@ public class NewsFeedFragment extends Fragment {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                fetchData(dataSnapshot);
+//                fetchData(dataSnapshot);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-                Log.d("DataRemove", "onChildAdded:" + dataSnapshot.getKey());
-                dataArray.clear();
-                fetchData(dataSnapshot);
+//                fetchData(dataSnapshot);
             }
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-                dataArray.clear();
-                fetchData(dataSnapshot);
             }
 
             @Override
@@ -104,18 +100,18 @@ public class NewsFeedFragment extends Fragment {
     }
 
     public void fetchData(DataSnapshot dataSnapshot){
-
-            Log.d("Datalog", "onChildAdded:" + dataSnapshot.getKey());
-            DataStorageClass info = new DataStorageClass();
-            Map<String, String> map = (Map) dataSnapshot.getValue();
-            info.title = map.get("title");
-            info.description = map.get("description");
-            info.wardNo = map.get("wardNo");
-            info.city = map.get("city");
-            info.landmark = map.get("landmark");
-            dataArray.add(info);
-            mAdapter = new RecyclerAdapter(dataArray);
-            recyclerView.setAdapter(mAdapter);
+        Log.d("Datalog", "onChildAdded:" + dataSnapshot.getKey());
+        DataStorageClass info = new DataStorageClass();
+        Map<String, String> map = (Map) dataSnapshot.getValue();
+        info.id = dataSnapshot.getKey();
+        info.title = map.get("title");
+        info.description = map.get("description");
+        info.wardNo = map.get("wardNo");
+        info.city = map.get("city");
+        info.landmark = map.get("landmark");
+        dataArray.add(info);
+        mAdapter = new AdminRecyclerAdapter(dataArray);
+        recyclerView.setAdapter(mAdapter);
     }
 
 }
