@@ -20,6 +20,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -39,11 +40,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class EditFeedActivity extends Fragment {
+public class EditFeedActivity extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     private RecyclerView recyclerView;
     private Context mContext;
     private AdminRecyclerAdapter mAdapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
     final List<DataStorageClass> dataArray = new ArrayList<>();
     public EditFeedActivity() {
         // Required empty public constructor
@@ -62,9 +64,19 @@ public class EditFeedActivity extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         recyclerView = (RecyclerView)getActivity().findViewById(R.id.recyclerViewContainer);
+        swipeRefreshLayout = (SwipeRefreshLayout)getActivity().findViewById(R.id.swipeOnEditFragment);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        getData();
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setRefreshing(true);
+        onRefresh();
 
+
+    }
+
+    @Override
+    public void onRefresh() {
+        dataArray.clear();
+        getData();
     }
 
     private void getData() {
@@ -112,6 +124,7 @@ public class EditFeedActivity extends Fragment {
         dataArray.add(info);
         mAdapter = new AdminRecyclerAdapter(dataArray);
         recyclerView.setAdapter(mAdapter);
+        swipeRefreshLayout.setRefreshing(false);
     }
 
 }

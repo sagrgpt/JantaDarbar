@@ -126,4 +126,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
         return true;
     }
+
+    @Override
+    public void onBackPressed() {
+        //This disables the back button from the admin disconnecting admin and login screen
+    }
 }

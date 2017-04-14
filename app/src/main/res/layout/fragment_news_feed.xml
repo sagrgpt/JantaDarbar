@@ -1,8 +1,11 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.complaints.jd.jantadurbar.Fragments.NewsFeedFragment">
+
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewContainer"
@@ -10,4 +13,4 @@
         android:layout_height="wrap_content"
         android:scrollbars="vertical"/>
 
-</LinearLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

@@ -20,6 +20,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -39,11 +40,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class NewsFeedFragment extends Fragment {
+public class NewsFeedFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private RecyclerView recyclerView;
     private RecyclerAdapter mAdapter;
     private Context mContext;
+    private SwipeRefreshLayout swipeRefreshLayout;
     final List<DataStorageClass> dataArray = new ArrayList<>();
 
     public NewsFeedFragment() {
@@ -59,12 +61,22 @@ public class NewsFeedFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         recyclerView = (RecyclerView)getActivity().findViewById(R.id.recyclerViewContainer);
+        swipeRefreshLayout=(SwipeRefreshLayout)getActivity().findViewById(R.id.swipe);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        getData();
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setRefreshing(true);
+        onRefresh();
 
+
+    }
+
+    @Override
+    public void onRefresh() {
+        dataArray.clear();
+        getData();
     }
 
     private void getData() {
@@ -116,6 +128,7 @@ public class NewsFeedFragment extends Fragment {
             dataArray.add(info);
             mAdapter = new RecyclerAdapter(dataArray);
             recyclerView.setAdapter(mAdapter);
+            swipeRefreshLayout.setRefreshing(false);
     }
 
 }

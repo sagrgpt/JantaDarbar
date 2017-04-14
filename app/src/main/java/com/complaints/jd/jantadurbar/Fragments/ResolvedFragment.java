@@ -19,6 +19,7 @@ package com.complaints.jd.jantadurbar.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -39,10 +40,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ResolvedFragment extends Fragment {
+public class ResolvedFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     private RecyclerView recyclerView;
     private ResolvedAdapter mAdapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
     final List<DataStorageClass> dataArray = new ArrayList<>();
 
     public ResolvedFragment() {
@@ -60,9 +62,19 @@ public class ResolvedFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         recyclerView = (RecyclerView)getActivity().findViewById(R.id.recyclerViewContainer2);
+        swipeRefreshLayout=(SwipeRefreshLayout)getActivity().findViewById(R.id.swipe2);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        getData();
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setRefreshing(true);
+        onRefresh();
 
+
+    }
+
+    @Override
+    public void onRefresh() {
+        dataArray.clear();
+        getData();
     }
 
     private void getData() {
@@ -108,5 +120,8 @@ public class ResolvedFragment extends Fragment {
         dataArray.add(info);
         mAdapter = new ResolvedAdapter(dataArray);
         recyclerView.setAdapter(mAdapter);
+        swipeRefreshLayout.setRefreshing(false);
     }
+
+
 }
