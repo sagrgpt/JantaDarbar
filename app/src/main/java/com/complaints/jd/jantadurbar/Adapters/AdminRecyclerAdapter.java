@@ -30,33 +30,33 @@ import java.util.List;
 
 public class AdminRecyclerAdapter extends RecyclerView.Adapter<AdminRecyclerAdapter.MyViewHolderClass>{
 
-        List<DataStorageClass> dataArray = Collections.emptyList();
+        private List<DataStorageClass> dataArray = Collections.emptyList();
 
 
-public static class MyViewHolderClass extends RecyclerView.ViewHolder{
+    public static class MyViewHolderClass extends RecyclerView.ViewHolder{
 
-    private static TextView title;
-    private static TextView description;
-    private static TextView landmark;
-    private static TextView city;
-    private static TextView ward;
-    private static TextView uniqueId;
-    private Button success;
+        static TextView title;
+        static TextView description;
+        static TextView landmark;
+        static TextView city;
+        static TextView ward;
+        static TextView uniqueId;
+        private Button success;
 
-    public MyViewHolderClass(View view) {
-        super(view);
-        uniqueId = (TextView) view.findViewById(R.id.uniqueId);
-        title = (TextView) view.findViewById(R.id.complainTitle);
-        description = (TextView) view.findViewById(R.id.description);
-        landmark = (TextView) view.findViewById(R.id.landmark);
-        city = (TextView) view.findViewById(R.id.city);
-        ward = (TextView) view.findViewById(R.id.ward_no);
-        success = (Button) view.findViewById(R.id.successBtn);
+        public MyViewHolderClass(View view) {
+            super(view);
+            uniqueId = (TextView) view.findViewById(R.id.uniqueId);
+            title = (TextView) view.findViewById(R.id.complainTitle);
+            description = (TextView) view.findViewById(R.id.description);
+            landmark = (TextView) view.findViewById(R.id.landmark);
+            city = (TextView) view.findViewById(R.id.city);
+            ward = (TextView) view.findViewById(R.id.ward_no);
+            success = (Button) view.findViewById(R.id.successBtn);
 
+
+        }
 
     }
-
-}
 
     public AdminRecyclerAdapter(List<DataStorageClass> dataArray) {
         this.dataArray = dataArray;
@@ -70,7 +70,7 @@ public static class MyViewHolderClass extends RecyclerView.ViewHolder{
     }
 
     @Override
-    public void onBindViewHolder(final AdminRecyclerAdapter.MyViewHolderClass holder, int position) {
+    public void onBindViewHolder(AdminRecyclerAdapter.MyViewHolderClass holder, int position) {
         final DataStorageClass currentData = dataArray.get(position);
         holder.title.setText(currentData.title);
         holder.description.setText(currentData.description);
@@ -78,12 +78,14 @@ public static class MyViewHolderClass extends RecyclerView.ViewHolder{
         holder.city.setText(currentData.city);
         holder.ward.setText("Ward No. : "+currentData.wardNo);
         holder.uniqueId.setText(currentData.id);
+        final int pos = holder.getAdapterPosition();
+
         holder.success.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(v.getContext(),"Button Click Working!!", Toast.LENGTH_SHORT).show();
-                removeItem(currentData, holder);
-                moveData(holder);
+                removeItem(pos);
+//                moveData(holder);
             }
         });
 
@@ -95,28 +97,27 @@ public static class MyViewHolderClass extends RecyclerView.ViewHolder{
 //        holder.ward.setText("Ward No. : 20");
     }
 
-    private void removeItem(DataStorageClass data, AdminRecyclerAdapter.MyViewHolderClass holder) {
-        int position = dataArray.indexOf(data);
-        dataArray.remove(position);
-        notifyItemRemoved(position);
-        moveData(holder);
-    }
-
-    public static void moveData(AdminRecyclerAdapter.MyViewHolderClass holder){
-        DatabaseReference m1Database = FirebaseDatabase.getInstance().getReference("NewsFeed");
-        DatabaseReference m2Database = FirebaseDatabase.getInstance().getReference("Resolved");
-        DataStorageClass dataStorageClass = new DataStorageClass(holder.title.getText().toString(),
-                holder.description.getText().toString(),
-                holder.landmark.getText().toString(),
-                holder.ward.getText().toString(),
-                holder.city.getText().toString());
-        m2Database.child(holder.uniqueId.getText().toString()).setValue(dataStorageClass);
-        m1Database.child(holder.uniqueId.getText().toString()).removeValue();
-    }
-
-
     @Override
     public int getItemCount() {
         return dataArray.size();
     }
+
+    private void removeItem(int position) {
+        dataArray.remove(position);
+        notifyItemRemoved(position);
+        moveData();
+    }
+
+    private static void moveData(){
+        DatabaseReference m1Database = FirebaseDatabase.getInstance().getReference("NewsFeed");
+        DatabaseReference m2Database = FirebaseDatabase.getInstance().getReference("Resolved");
+        DataStorageClass dataStorageClass = new DataStorageClass(MyViewHolderClass.title.getText().toString(),
+                MyViewHolderClass.description.getText().toString(),
+                MyViewHolderClass.landmark.getText().toString(),
+                MyViewHolderClass.ward.getText().toString(),
+                MyViewHolderClass.city.getText().toString());
+        m2Database.child(MyViewHolderClass.uniqueId.getText().toString()).setValue(dataStorageClass);
+        m1Database.child(MyViewHolderClass.uniqueId.getText().toString()).removeValue();
+    }
+
 }
