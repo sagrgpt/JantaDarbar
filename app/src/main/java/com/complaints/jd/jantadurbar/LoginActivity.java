@@ -79,7 +79,10 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putBoolean("IsAdmin",true);
                     editor.putString("Username",email);
                     editor.apply();
-                    startActivity(new Intent(LoginActivity.this,AdminActivity.class));
+                    Intent intent = new Intent(LoginActivity.this,AdminActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
                 }
             }
 

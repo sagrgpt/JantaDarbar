@@ -19,6 +19,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -27,11 +28,17 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import com.complaints.jd.jantadurbar.Adapters.ViewPagerAdapter;
 import com.complaints.jd.jantadurbar.Fragments.EditFeedActivity;
 import com.complaints.jd.jantadurbar.Fragments.ResolvedFragment;
 
 public class AdminActivity extends AppCompatActivity {
+
+    //Variable used to implement exit function
+    boolean doubleBackToExitPressedOnce = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +85,7 @@ public class AdminActivity extends AppCompatActivity {
                         editor.putString("Username",null);
                         editor.apply();
                         startActivity(new Intent(AdminActivity.this, MainActivity.class));
+                        finish();
                     }
                 });
         builder.show();
@@ -85,7 +93,28 @@ public class AdminActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+    }
+
+    @Override
     public void onBackPressed() {
-        //This disables the back button from the admin disconnecting admin and login screen
+        if (doubleBackToExitPressedOnce) {
+            finish();
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Touch again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 }

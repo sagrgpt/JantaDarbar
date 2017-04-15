@@ -16,6 +16,8 @@
 
 package com.complaints.jd.jantadurbar.Adapters;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +33,7 @@ import java.util.List;
 public class AdminRecyclerAdapter extends RecyclerView.Adapter<AdminRecyclerAdapter.MyViewHolderClass>{
 
         private List<DataStorageClass> dataArray = Collections.emptyList();
+        private static String username;
 
 
     public static class MyViewHolderClass extends RecyclerView.ViewHolder{
@@ -66,6 +69,8 @@ public class AdminRecyclerAdapter extends RecyclerView.Adapter<AdminRecyclerAdap
     public AdminRecyclerAdapter.MyViewHolderClass onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.edit_feed_card,parent,false);
         AdminRecyclerAdapter.MyViewHolderClass holder = new AdminRecyclerAdapter.MyViewHolderClass(view);
+        SharedPreferences sp = parent.getContext().getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        username = sp.getString("Username",null);
         return holder;
     }
 
@@ -117,6 +122,7 @@ public class AdminRecyclerAdapter extends RecyclerView.Adapter<AdminRecyclerAdap
                 MyViewHolderClass.ward.getText().toString(),
                 MyViewHolderClass.city.getText().toString());
         m2Database.child(MyViewHolderClass.uniqueId.getText().toString()).setValue(dataStorageClass);
+        m2Database.child(MyViewHolderClass.uniqueId.getText().toString()).child("ResolvedAdmin").setValue(username);
         m1Database.child(MyViewHolderClass.uniqueId.getText().toString()).removeValue();
     }
 

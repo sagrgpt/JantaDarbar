@@ -24,10 +24,12 @@ public class SplashScreenActivity extends Activity {
                 SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
                 if(sharedPreferences.getBoolean("IsAdmin",false)){
                     startActivity(new Intent(SplashScreenActivity.this, AdminActivity.class));
+                    finish();
                 }
                 else {
                     Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
                     startActivity(i);
+                    finish();
                 }
             }
         }, SPLASH_DISPLAY_LENGTH);

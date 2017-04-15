@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -37,18 +38,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
+    //Variable used to implement exit function
+    boolean doubleBackToExitPressedOnce = false;
 
     EditText title,description,landmark,wardNo,city;
 
@@ -82,9 +78,18 @@ public class MainActivity extends AppCompatActivity {
                 registerComplaint.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Boolean flag = saveData();
-                        if(flag){
-                            dialog.dismiss();
+                        if(!title.getText().toString().equals("") |
+                                !description.getText().toString().equals("") |
+                                !landmark.getText().toString().equals("") |
+                                !wardNo.getText().toString().equals("") |
+                                !city.getText().toString().equals("") ) {
+                            Boolean flag = saveData();
+                            if (flag) {
+                                dialog.dismiss();
+                            }
+                        }
+                        else{
+
                         }
                     }
                 });
@@ -129,6 +134,20 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //This disables the back button from the admin disconnecting admin and login screen
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Touch again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 }
