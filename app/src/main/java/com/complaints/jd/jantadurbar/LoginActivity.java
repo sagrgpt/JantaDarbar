@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        setTitle("Admin Panel");
+        setTitle(R.string.title_login_activity);
 
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Snackbar.make(getCurrentFocus(),"Internet Connection slow!!",Snackbar.LENGTH_SHORT)
+                Snackbar.make(getCurrentFocus(), R.string.snackbar_message,Snackbar.LENGTH_SHORT)
                         .setAction("Action",null).show();
             }
         });

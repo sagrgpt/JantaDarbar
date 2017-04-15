@@ -20,7 +20,6 @@
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".AdminActivity"
-            android:label="@string/title_activity_admin"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SplashScreenActivity"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">

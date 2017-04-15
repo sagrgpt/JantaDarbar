@@ -81,7 +81,7 @@ public class AdminRecyclerAdapter extends RecyclerView.Adapter<AdminRecyclerAdap
         holder.description.setText(currentData.description);
         holder.landmark.setText(currentData.landmark);
         holder.city.setText(currentData.city);
-        holder.ward.setText("Ward No. : "+currentData.wardNo);
+        holder.ward.setText(currentData.wardNo);
         holder.uniqueId.setText(currentData.id);
         final int pos = holder.getAdapterPosition();
 

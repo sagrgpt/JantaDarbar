@@ -47,7 +47,7 @@ public class AdminActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("Manage Complaints");
+        setTitle(R.string.title_admin_activity);
 
         /** Setting the tab bar for the tab layout **/
         ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
@@ -59,8 +59,8 @@ public class AdminActivity extends AppCompatActivity {
 
     public void setUpViewPage(ViewPager mViewPager){
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new EditFeedActivity(),"Complaints");
-        viewPagerAdapter.addFragment(new ResolvedFragment(),"Resolved");
+        viewPagerAdapter.addFragment(new EditFeedActivity(),getString(R.string.complaints_feed_title));
+        viewPagerAdapter.addFragment(new ResolvedFragment(),getString(R.string.resolved_feed_title));
         mViewPager.setAdapter(viewPagerAdapter);
     }
 
@@ -74,9 +74,9 @@ public class AdminActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         AlertDialog.Builder builder = new AlertDialog.Builder(AdminActivity.this);
-        builder.setTitle("Are you sure!!")
-                .setMessage("Are you sure to logout from the administrator panel..")
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setTitle(R.string.logout_dialog_title)
+                .setMessage(R.string.logout_dialog_message)
+                .setPositiveButton(R.string.logout_dialog_positive_btn, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
@@ -107,7 +107,7 @@ public class AdminActivity extends AppCompatActivity {
         }
 
         this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Touch again to exit", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.exit_toast, Toast.LENGTH_SHORT).show();
 
         new Handler().postDelayed(new Runnable() {
 

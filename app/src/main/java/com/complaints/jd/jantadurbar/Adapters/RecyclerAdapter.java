@@ -27,10 +27,6 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by sagar on 10/4/17.
- */
-
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolderClass>{
 
     List<DataStorageClass> dataArray = Collections.emptyList();
@@ -68,7 +64,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         holder.description.setText(currentData.description);
         holder.landmark.setText(currentData.landmark);
         holder.city.setText(currentData.city);
-        holder.ward.setText("Ward No. : "+currentData.wardNo);
+        holder.ward.setText(currentData.wardNo);
 //        holder.title.setText("Title");
 //
 //        holder.description.setText("description");

@@ -69,7 +69,7 @@ public class ResolvedAdapter extends RecyclerView.Adapter<ResolvedAdapter.MyView
         holder.description.setText(currentData.description);
         holder.landmark.setText(currentData.landmark);
         holder.city.setText(currentData.city);
-        holder.ward.setText("Ward No. : "+currentData.wardNo);
+        holder.ward.setText(currentData.wardNo);
 //        holder.title.setText("Title");
 //
 //        holder.description.setText("description");

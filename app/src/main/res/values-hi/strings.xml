@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">जनता दरबार</string>
+    <string name="login_username_hint">नाम</string>
+    <string name="login_pin_hint">पिन</string>
+    <string name="login_button_text">लॉग इन करें</string>
+    <string name="application_logo_content_desc">आवेदन लोगो</string>
+    <string name="news_icon_description">News Icon Image View</string>
+    <string name="feed_title_hint">शीर्षक</string>
+    <string name="feed_description_hint">विवरण</string>
+    <string name="feed_landmark_hint">सीमा चिन्ह</string>
+    <string name="feed_ward_n0_hint">वार्ड नं: </string>
+    <string name="feed_city_hint">शहर</string>
+    <string name="feed_success_btn">सफलता</string>
+    <string name="newsfeed_status_text">काम प्रगति पर है!!</string>
+    <string name="raise_issue_title_hint">शीर्षक उदाहरण: सड़क, बिजली</string>
+    <string name="raise_issue_location_hint">स्थान उदाहरण: Baywatch होटल</string>
+    <string name="raise_issue_ward_hint">वार्ड संख्या उदाहरण: 10</string>
+    <string name="register_complain_btn_text">शिकायत दर्ज करें</string>
+    <string name="issue_resolved_status">मसला हल हो गया</string>
+
+    //Title for activities
+    <string name="title_admin_activity">शिकायत संचालन</string>
+    <string name="title_login_activity">व्यवस्थापक पृष्ठ</string>
+    <string name="register_complaint_title">शिकायत पृष्ठ</string>
+    <string name="news_feed_title">समाचार फ़ीड</string>
+    <string name="resolved_feed_title">हल</string>
+    <string name="exit_toast">बाहर निकलने के लिए पुनः स्पर्श करें</string>
+    <string name="snackbar_message">इंटरनेट कनेक्शन धीमा !!</string>
+    <string name="complaints_feed_title">शिकायतें</string>
+    <string name="logout_dialog_title">क्या आपको यकीन है!!</string>
+    <string name="logout_dialog_message">क्या आप व्यवस्थापक पैनल से लॉगआउट करना सुनिश्चित करते हैं ..</string>
+    <string name="logout_dialog_positive_btn">ठीक</string>
+    <string name="login_menu_option">लॉग इन</string>
+    <string name="logout_menu_option">लोग आउट</string>
+</resources>

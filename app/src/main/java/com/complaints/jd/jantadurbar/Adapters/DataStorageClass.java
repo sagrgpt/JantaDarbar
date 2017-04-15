@@ -16,10 +16,6 @@
 
 package com.complaints.jd.jantadurbar.Adapters;
 
-/**
- * Created by sagar on 9/4/17.
- */
-
 public class DataStorageClass {
 
     public String title;

@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final Dialog dialog = new Dialog(MainActivity.this);
                 dialog.setContentView(R.layout.raise_issue);
-                dialog.setTitle("Register Complaint");
+                dialog.setTitle(R.string.register_complaint_title);
                 title = (EditText)dialog.findViewById(R.id.createTitle);
                 description = (EditText)dialog.findViewById(R.id.createDescription);
                 landmark = (EditText)dialog.findViewById(R.id.makeLandmark);
@@ -115,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void setUpViewPage(ViewPager mViewPager){
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new NewsFeedFragment(),"News Feed");
-        viewPagerAdapter.addFragment(new ResolvedFragment(),"Resolved");
+        viewPagerAdapter.addFragment(new NewsFeedFragment(),getString(R.string.news_feed_title));
+        viewPagerAdapter.addFragment(new ResolvedFragment(),getString(R.string.resolved_feed_title));
         mViewPager.setAdapter(viewPagerAdapter);
     }
 
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Touch again to exit", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.exit_toast, Toast.LENGTH_SHORT).show();
 
         new Handler().postDelayed(new Runnable() {
 

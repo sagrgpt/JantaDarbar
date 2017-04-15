@@ -27,7 +27,7 @@
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:src="@drawable/register"
-                    android:contentDescription="Icon for card" />
+                    android:contentDescription="@string/news_icon_description" />
 
                 <TextView
                     android:id="@+id/complainTitle"
@@ -35,10 +35,10 @@
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/newsIcon"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:textAppearance="?android:textAppearanceMedium"
                     android:textStyle="bold"
-                    android:hint="Title"/>
+                    android:hint="@string/feed_title_hint"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxHeight="80dp"
-                android:hint="Description"
+                android:hint="@string/feed_description_hint"
                 android:textAppearance="?android:textAppearanceMedium"/>
 
             <TextView
@@ -68,23 +68,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/landmark"
-                android:hint="Landmark"
+                android:hint="@string/feed_landmark_hint"
                 android:textAppearance="?android:textAppearanceSmall" />
 
-            <TextView
-                android:layout_marginTop="5dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/ward_no"
-                android:hint="Ward N0. :"
-                android:textAppearance="?android:textAppearanceSmall" />
+                android:orientation="horizontal">
 
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ward_label"
+                    android:text="@string/feed_ward_n0_hint"
+                    android:textAppearance="?android:textAppearanceSmall" />
+
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/ward_no"
+                    android:textAppearance="?android:textAppearanceSmall" />
+
+            </LinearLayout>
             <TextView
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/city"
-                android:hint="City"
+                android:hint="@string/feed_city_hint"
                 android:textAppearance="?android:textAppearanceSmall" />
 
 
@@ -97,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_alignParentEnd="true"
-                    android:text="Success"
+                    android:text="@string/feed_success_btn"
                     android:padding="3dp"
                     android:layout_marginBottom="5dp"
                     android:textAppearance="?android:textAppearanceSmall"
